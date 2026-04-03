@@ -8,11 +8,12 @@
 #include <dt-bindings/zmk/ext_power.h>
 
 #define LAYER_BASE         0
-#define LAYER_EXTRAS       1
-#define LAYER_CONFIG       2
-#define LAYER_BLUETOOTH    3
-#define LAYER_SCROLL       4
-#define LAYER_SNIPER       5
+#define LAYER_SNIPER       1
+#define LAYER_EXTRAS       2
+#define LAYER_CONFIG       3
+#define LAYER_BLUETOOTH    4
+#define LAYER_SCROLL       5
+
 
 #define TWIST_MULTIPLIER   1
 #define TWIST_DIVISOR      10
