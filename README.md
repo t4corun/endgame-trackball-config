@@ -6,12 +6,11 @@
 
 These behaviors are defined in this repo
 
-- &ltm
-- &ltmkp
-- &cdch  don't plan on using this I think
-- &cdc   don't plan on using this I think
+- `&ltm`
+- `&ltmkp`
+- `&cdch` and `&cdc` I think I won't use these
 
 These behaviors are defined somewhere else
 
-- &sens
-- &scrlsens
+- `&sens` and `&scrlsens` defined in [efogdev/zmk-pointer-2s-mixer](https://github.com/efogdev/zmk-pointer-2s-mixer)
+- `&rrl` is defined in [efogdev/zmk-report-rate-limit](https://github.com/efogdev/zmk-report-rate-limit)

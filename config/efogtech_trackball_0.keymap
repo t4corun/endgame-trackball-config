@@ -7,12 +7,12 @@
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
 
-#define LAYER_DEFAULT      0
+#define LAYER_BASE         0
 #define LAYER_EXTRAS       1
-#define LAYER_DEVICE       2
+#define LAYER_CONFIG       2
 #define LAYER_BLUETOOTH    3
 #define LAYER_SCROLL       4
-#define LAYER_SNIPE        5
+#define LAYER_SNIPER       5
 
 #define TWIST_MULTIPLIER   1
 #define TWIST_DIVISOR      10
@@ -23,19 +23,17 @@
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
 
-
-
-
 #define _____xx_____ &none
 #define ____________ &trans
 #define ENCODER_UP   &kp LC(TAB)     &kp C_VOL_UP
 #define ENCODER_DOWN &kp LC(LS(TAB)) &kp C_VOL_DN
 
-#define SNIPER       &mo  LAYER_SNIPE
+#define BASE         &to  LAYER_
+#define SNIPER       &to  LAYER_SNIPER
 #define DRAG_SCROLL  &mo  LAYER_SCROLL
 #define BLUETOOTH    &mo  LAYER_BLUETOOTH
 #define EXTRAS_MB4   &ltm LAYER_EXTRAS MB4
-#define DEVICE_MB5   &ltm LAYER_DEVICE MB5
+#define CONFIG_MB5   &ltm LAYER_CONFIG MB5
 
 #define BT_CLEAR     &bt  BT_CLR
 #define BT_1         &bt  BT_SEL 0
@@ -61,15 +59,30 @@
             DECLARE_ENCODERS;
             bindings = <
              // buttons
-                SNIPER       DRAG_SCROLL
-                BLUETOOTH    &mkp RCLK
-                &mkp LCLK    &mkp MCLK
-                EXTRAS_MB4   DEVICE_MB5
+                BLUETOOTH    DRAG_SCROLL
+                &mkp MCLK    &mkp RCLK
+                &mkp LCLK    SNIPER
+                EXTRAS_MB4   CONFIG_MB5
 
              // rotary encoders
                 ENCODER_UP
                 ENCODER_DOWN
             >;  
+        };
+
+
+        sniper {
+            display-name = "sniper";
+            DECLARE_ENCODERS;
+            bindings = <
+                BLUETOOTH    DRAG_SCROLL
+                &mkp MCLK    &mkp RCLK
+                &mkp LCLK    BASE
+                EXTRAS_MB4   CONFIG_MB5
+
+                ENCODER_UP
+                ENCODER_DOWN
+            >;
         };
 
         extras {
@@ -86,13 +99,13 @@
             >;
         };
 
-        device {
-            display-name = "device";
+        config {
+            display-name = "config";
             DECLARE_ENCODERS;
             bindings = <
                 &rgb_off     &rgb_ug RGB_EFF
-                _____xx_____ _____xx_____
-                &rgb_tog     _____xx_____
+                _____xx_____ &rrl 1
+                &rgb_tog     &soft_off
                 ZMK_STUDIO   ____________
 
                 ENCODER_UP
@@ -104,8 +117,8 @@
             display-name = "bluetooth";
             DECLARE_ENCODERS;
             bindings = <
-                BT_CLEAR     BT_1
-                ____________ BT_2
+                ____________ BT_1
+                BT_CLEAR     BT_2
                 BT_6         BT_3
                 BT_5         BT_4
 
@@ -120,25 +133,11 @@
             bindings = <
                 ____________ ____________
                 ____________ TWIST_UP
-                &rrl 1       TWIST_DN
+                ____________ TWIST_DN
                 POINT_DN     POINT_UP
 
                 POINT_DN     TWIST_UP
                 POINT_UP     TWIST_DN
-            >;
-        };
-
-        snipe {
-            display-name = "nipe";
-            DECLARE_ENCODERS;
-            bindings = <
-                ____________ &soft_off
-                ____________ ____________
-                ____________ ____________
-                ____________ ____________
-
-                &kp LEFT     &kp RIGHT
-                &kp RIGHT    &kp LEFT
             >;
         };
     };
