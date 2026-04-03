@@ -228,7 +228,7 @@
             wait-ms = <20>;
             bindings
             = <&rgb_ug RGB_TOG>
-              <&ext_power EP_TOG>
+            , <&ext_power EP_TOG>
             ;
         };
 
@@ -239,7 +239,7 @@
             wait-ms = <20>;
             bindings
             = <&ext_power EP_OFF>
-              <&rgb_ug RGB_OFF>
+            , <&rgb_ug RGB_OFF>
             ;
         };
     };
