@@ -175,7 +175,7 @@
         };
 
         snipe {
-            layers = <LAYER_SNIPE>;
+            layers = <LAYER_SNIPER>;
             input-processors = <&zip_xy_scaler SNIPE_MULTIPLIER SNIPE_DIVISOR>,
                                <&zip_rotate_pointer>, <&zip_rotate_scroll>, <&zip_ble_report_rate_limit>;
         };  
