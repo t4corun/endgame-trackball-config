@@ -28,7 +28,7 @@
 #define ENCODER_UP   &kp LC(TAB)     &kp C_VOL_UP
 #define ENCODER_DOWN &kp LC(LS(TAB)) &kp C_VOL_DN
 
-#define BASE         &to  LAYER_
+#define BASE         &to  LAYER_BASE
 #define SNIPER       &to  LAYER_SNIPER
 #define DRAG_SCROLL  &mo  LAYER_SCROLL
 #define BLUETOOTH    &mo  LAYER_BLUETOOTH
