@@ -16,10 +16,10 @@
 
 
 #define TWIST_MULTIPLIER   1
-#define TWIST_DIVISOR      3 // 10
+#define TWIST_DIVISOR      3 // default 10
 
-#define SCROLL_MULTIPLIER  1
-#define SCROLL_DIVISOR     1
+#define SCROLL_MULTIPLIER  3
+#define SCROLL_DIVISOR     4 // default 3
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
