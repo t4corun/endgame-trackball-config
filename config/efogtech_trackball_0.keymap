@@ -16,7 +16,7 @@
 
 
 #define TWIST_MULTIPLIER   1
-#define TWIST_DIVISOR      10
+#define TWIST_DIVISOR      3 // 10
 
 #define SCROLL_MULTIPLIER  1
 #define SCROLL_DIVISOR     3
