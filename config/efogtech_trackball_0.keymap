@@ -20,8 +20,8 @@
 #define SCROLL_V_MULTI     3 // default 1 for both axis
 #define SCROLL_V_DIVISOR   4 // default 3 for both axis
 
-#define SCROLL_V_MULTI     1 // default 1
-#define SCROLL_V_DIVISOR   3 // default 3
+#define SCROLL_H_MULTI     1 // default 1
+#define SCROLL_H_DIVISOR   3 // default 3
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
