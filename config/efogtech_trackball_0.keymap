@@ -21,7 +21,7 @@
 #define SCROLL_V_DIVISOR   4 // default 3 for both axis
 
 #define SCROLL_H_MULTI     1 // default 1
-#define SCROLL_H_DIVISOR   4 // default 3
+#define SCROLL_H_DIVISOR   3 // default 3
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
@@ -164,6 +164,7 @@
             layers = <LAYER_SCROLL>;
             input-processors = <&zip_x_scaler SCROLL_H_MULTI SCROLL_H_DIVISOR>, 
                                <&zip_y_scaler SCROLL_V_MULTI SCROLL_V_DIVISOR>,
+                               <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT INPUT_TRANSFORM_H_INVERT>,
                                <&zip_axis_clamper>,
                                <&zip_xy_to_scroll_mapper>,
                                <&zip_dragscroll_accel>,
