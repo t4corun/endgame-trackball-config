@@ -6,7 +6,6 @@
 #include <dt-bindings/zmk/p2sm.h>
 #include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/input_transform.h>
 
 #define LAYER_BASE         0
 #define LAYER_SNIPER       1
@@ -165,9 +164,9 @@
             layers = <LAYER_SCROLL>;
             input-processors = <&zip_x_scaler SCROLL_H_MULTI SCROLL_H_DIVISOR>, 
                                <&zip_y_scaler SCROLL_V_MULTI SCROLL_V_DIVISOR>,
-                               <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                                <&zip_axis_clamper>,
                                <&zip_xy_to_scroll_mapper>,
+                               <&zip_scroll_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>,
                                <&zip_dragscroll_accel>,
                                <&zip_rotate_scroll>,
                                <&zip_ble_report_rate_limit>;
