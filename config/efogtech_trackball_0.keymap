@@ -24,19 +24,16 @@ High Resolution scrolling settings
 
 #define SCROLL_H_MULTI     1 // default 1
 #define SCROLL_H_DIVISOR   3 // default 3
-
-#define SNIPE_MULTIPLIER   1
-#define SNIPE_DIVISOR      4
 */
 
 #define TWIST_MULTIPLIER   1
-#define TWIST_DIVISOR      3
+#define TWIST_DIVISOR      9
 
 #define SCROLL_V_MULTI     3
-#define SCROLL_V_DIVISOR   4
+#define SCROLL_V_DIVISOR   12
 
 #define SCROLL_H_MULTI     1
-#define SCROLL_H_DIVISOR   3
+#define SCROLL_H_DIVISOR   9
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
