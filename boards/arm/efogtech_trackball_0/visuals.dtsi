@@ -133,7 +133,7 @@
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
             //feedback-pattern = <80>;
-            feedback-pattern = <0 15 80>;
+            feedback-pattern = <50>;
             ble-profile-index = <0>;
         };
 
@@ -145,7 +145,7 @@
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
-            feedback-pattern = <0 15 50 175 50>;
+            feedback-pattern = <50 175 50>;
             ble-profile-index = <1>;
         };
 
@@ -157,7 +157,7 @@
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
-            feedback-pattern = <0 15 50 175 50 175 50>;
+            feedback-pattern = <50 175 50 175 50>;
             ble-profile-index = <2>;
         };
 
@@ -169,7 +169,7 @@
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
-            feedback-pattern = <0 15 50 175 50 175 50 175 50>;
+            feedback-pattern = <50 175 50 175 50 175 50>;
             ble-profile-index = <3>;
         };
 
@@ -181,7 +181,7 @@
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
-            feedback-pattern = <0 15 50 175 50 175 50 175 50 175 50>;
+            feedback-pattern = <50 175 50 175 50 175 50 175 50>;
             ble-profile-index = <4>;
         };
 
@@ -193,7 +193,7 @@
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
-            feedback-pattern = <0 15 50 175 50 175 50 175 50 175 50 175 50>;
+            feedback-pattern = <50 175 50 175 50 175 50 175 50 175 50>;
             ble-profile-index = <5>;
         };
 
