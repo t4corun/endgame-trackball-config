@@ -1,12 +1,12 @@
 #include <dt-bindings/spi/spi.h>
 
-#ifndef LAYER_DEFAULT
-#define LAYER_DEFAULT      0
-#define LAYER_EXTRAS       1
-#define LAYER_DEVICE       2
-#define LAYER_SCROLL       3
-#define LAYER_SNIPE        4
-#define LAYER_USER         5
+#ifndef LAYER_BASE
+#   define LAYER_BASE      0
+#   define LAYER_SNIPER    1
+#   define LAYER_SCROLL    2
+#   define LAYER_EXTRAS    3
+#   define LAYER_BLUETOOTH 4  //LAYER_DEVICE
+#   define LAYER_CONFIG    5
 #endif
 
 / {
@@ -27,9 +27,9 @@
 		feedback-delay = <5>;
 		ext-power = <&epwr>;
 
-		layer_default {
+		layer_base {
 			event-type = "layer";
-			layer-index = <LAYER_DEFAULT>;
+			layer-index = <LAYER_BASE>;
 			colors = [00 00 00];
 			persistent;
 		};
@@ -41,9 +41,9 @@
 			persistent;
 		};
 
-		layer_device {
+		layer_bluetooth {
 			event-type = "layer";
-			layer-index = <LAYER_DEVICE>;
+			layer-index = <LAYER_BLUETOOTH>;
 			colors = [80 00 FF];
 			animation = "flash";
 			flash-duration-ms = <30000>;
@@ -59,17 +59,21 @@
 			persistent;
 		};
 
-		layer_snipe {
+		layer_sniper {
 			event-type = "layer";
-			layer-index = <LAYER_SNIPE>;
+			layer-index = <LAYER_SNIPER>;
 			colors = [ff 00 00];
 			persistent;
 		};
 
-		layer_user {
+		layer_config {
 			event-type = "layer";
-			layer-index = <LAYER_USER>;
-			colors = [00 00 00];
+			layer-index = <LAYER_CONFIG>;
+			colors = [00 80 FF];
+			animation = "flash";
+			flash-duration-ms = <30000>;
+			flash-ease-in-ms = <250>;
+			feedback-pattern = <40>;
 			persistent;
 		};
 
