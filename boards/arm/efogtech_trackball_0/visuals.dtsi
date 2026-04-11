@@ -127,12 +127,11 @@
         evt_ble_1 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [00 40 ff];
+            colors = [84 5e c2];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
-            //feedback-pattern = <80>;
             feedback-pattern = <50>;
             ble-profile-index = <0>;
         };
@@ -140,7 +139,7 @@
         evt_ble_2 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [00 40 ff];
+            colors = [d6 5d b1];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
@@ -152,7 +151,7 @@
         evt_ble_3 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [00 40 ff];
+            colors = [ff 6f 91];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
@@ -164,7 +163,7 @@
         evt_ble_4 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [00 40 ff];
+            colors = [ff 96 71];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
@@ -176,7 +175,7 @@
         evt_ble_5 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [00 40 ff];
+            colors = [ff c7 5f];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
@@ -188,7 +187,7 @@
         evt_ble_6 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [00 40 ff];
+            colors = [f9 f8 71];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
