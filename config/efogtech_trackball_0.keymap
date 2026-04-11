@@ -66,6 +66,8 @@ High Resolution scrolling settings
 #define POINT_UP           &sens     P2SM_INC 1
 #define POINT_DN           &sens     P2SM_DEC 1
 
+
+#define AF_TOGGLE          &af_toggle AF_TOG
 #define ZMK_STUDIO         &studio_unlock
 
 #define SC_UNDO            &kp LC(Z)
@@ -149,13 +151,29 @@ High Resolution scrolling settings
             >;
         };
 
+/*
         config {
             display-name = "config";
             DECLARE_ENCODERS;
             bindings = <
                 &soft_off    &rgb_off
-                _____xx_____ _____xx_____
+                AF_TOGGLE    _____xx_____
                 &rgb_tog     &rgb_ug RGB_EFF
+                ZMK_STUDIO   ____________
+
+                ENCODER_NONE
+                ENCODER_NONE
+            >;
+        };
+*/
+
+        config {
+            display-name = "config";
+            DECLARE_ENCODERS;
+            bindings = <
+                &soft_off    _____xx_____
+                AF_TOGGLE    _____xx_____
+                _____xx_____ _____xx_____
                 ZMK_STUDIO   ____________
 
                 ENCODER_NONE
@@ -191,12 +209,6 @@ High Resolution scrolling settings
                                <&zip_rotate_scroll>,
                                <&zip_ble_report_rate_limit>;
         };  
-    };
-
-    behaviors {
-        rrl {
-            values-ms = <0 1 2 4 6 8>;
-        };
     };
 
     macros {
