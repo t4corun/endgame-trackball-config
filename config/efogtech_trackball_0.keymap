@@ -153,22 +153,6 @@ High Resolution scrolling settings
             >;
         };
 
-/*
-        config {
-            display-name = "config";
-            DECLARE_ENCODERS;
-            bindings = <
-                &soft_off    &rgb_off
-                AF_TOGGLE    _____xx_____
-                &rgb_tog     &rgb_ug RGB_EFF
-                ZMK_STUDIO   ____________
-
-                ENCODER_NONE
-                ENCODER_NONE
-            >;
-        };
-*/
-
         config {
             display-name = "config";
             DECLARE_ENCODERS;
@@ -211,30 +195,5 @@ High Resolution scrolling settings
                                <&zip_rotate_scroll>,
                                <&zip_ble_report_rate_limit>;
         };  
-    };
-
-
-    macros {
-        rgb_tog: rgb_tog {
-            compatible = "zmk,behavior-macro";
-            display-name = "Toggle RGB";
-            #binding-cells = <0>;
-            wait-ms = <20>;
-            bindings
-            = <&rgb_ug RGB_TOG>
-            , <&ext_power EP_TOG>
-            ;
-        };
-
-        rgb_off: rgb_off {
-            compatible = "zmk,behavior-macro";
-            display-name = "RGB off";
-            #binding-cells = <0>;
-            wait-ms = <20>;
-            bindings
-            = <&ext_power EP_OFF>
-            , <&rgb_ug RGB_OFF>
-            ;
-        };
     };
 };

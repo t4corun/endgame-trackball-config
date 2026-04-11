@@ -1,5 +1,7 @@
 #include <dt-bindings/spi/spi.h>
 
+
+// this is differnt than what Artem has
 #ifndef LAYER_BASE
 #   define LAYER_BASE      0
 #   define LAYER_SNIPER    1
