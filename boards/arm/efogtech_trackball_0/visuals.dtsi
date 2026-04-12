@@ -127,7 +127,7 @@
         evt_ble_1 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [84 5e c2];
+            colors = [00 ff 40];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
@@ -139,7 +139,7 @@
         evt_ble_2 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [d6 5d b1];
+            colors = [00 ff 40];
             animation = "flash";
             flash-duration-ms = <350>;
             flash-ease-in-ms = <100>;
@@ -151,9 +151,9 @@
         evt_ble_3 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [ff 6f 91];
+            colors = [00 ff 40];
             animation = "flash";
-            flash-duration-ms = <350>;
+            flash-duration-ms = <500>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
             feedback-pattern = <50 175 50 175 50>;
@@ -163,9 +163,9 @@
         evt_ble_4 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [ff 96 71];
+            colors = [00 ff 40];
             animation = "flash";
-            flash-duration-ms = <350>;
+            flash-duration-ms = <725>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
             feedback-pattern = <50 175 50 175 50 175 50>;
@@ -175,9 +175,9 @@
         evt_ble_5 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [ff c7 5f];
+            colors = [00 ff 40];
             animation = "flash";
-            flash-duration-ms = <350>;
+            flash-duration-ms = <950>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
             feedback-pattern = <50 175 50 175 50 175 50 175 50>;
@@ -187,9 +187,9 @@
         evt_ble_6 {
             label = "Bluetooth device";
             event-type = "ble-profile";
-            colors = [f9 f8 71];
+            colors = [00 ff 40];
             animation = "flash";
-            flash-duration-ms = <350>;
+            flash-duration-ms = <1175>;
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
             feedback-pattern = <50 175 50 175 50 175 50 175 50 175 50>;
