@@ -2,15 +2,10 @@
 
 [Download latest UF2](https://nightly.link/efogtech/endgame-trackball-config/workflows/build/paw3395/firmware.zip)
 
-### My notes
+### My Notes
 
-These behaviors are defined in this repo
+Goals
+- implement my keymap without changing Artem's board: `/boards/arm/efogtech_trackball_0`
+- Keep changes to only the `/config` folder. There will be many undefines and behavior overrides. This also enables easier merging of Artem's future releases
+- Implement parameterization when possible
 
-- `&ltm`
-- `&ltmkp`
-- `&cdch` and `&cdc` I think I won't use these
-
-These behaviors are defined somewhere else
-
-- `&sens` and `&scrlsens` defined in [efogdev/zmk-pointer-2s-mixer](https://github.com/efogdev/zmk-pointer-2s-mixer)
-- `&rrl` is defined in [efogdev/zmk-report-rate-limit](https://github.com/efogdev/zmk-report-rate-limit)
