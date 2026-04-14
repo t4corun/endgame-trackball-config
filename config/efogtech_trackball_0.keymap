@@ -7,14 +7,24 @@
 #include <dt-bindings/zmk/bistable_behavior.h>
 #include <dt-bindings/zmk/p2sm.h>
 
-#ifndef LAYER_BASE
-#   define LAYER_BASE      0
-#   define LAYER_SNIPER    1
-#   define LAYER_SCROLL    2
-#   define LAYER_EXTRAS    3
-#   define LAYER_BLUETOOTH 4
-#   define LAYER_CONFIG    5
+
+//unsetting Artem's defaults
+#ifdef LAYER_DEFAULT
+#   undef LAYER_DEFAULT    0
+#   undef LAYER_EXTRAS     1
+#   undef LAYER_DEVICE     2
+#   undef LAYER_SCROLL     3
+#   undef LAYER_SNIPE      4
+#   undef LAYER_USER       5
 #endif
+                             
+#define LAYER_BASE         0
+#define LAYER_SNIPER       1
+#define LAYER_SCROLL       2
+#define LAYER_EXTRAS       3
+#define LAYER_BLUETOOTH    4
+#define LAYER_CONFIG       5
+
 
 /*
 High Resolution scrolling settings
@@ -39,6 +49,19 @@ High Resolution scrolling settings
 
 #define SNIPE_MULTIPLIER   1
 #define SNIPE_DIVISOR      4
+
+//-----------------------------------------
+
+#define COLOR_OFF          00 00 00
+#define COLOR_BLUETOOTH    80 00 FF
+#define COLOR_SNIPER       ff 00 00
+#define COLOR_CONFIG       00 80 FF
+#define COLOR_BT_CHANGE    00 ff 40
+#define PULSE_BT           50 175
+#define PULSE_LAYER        60
+
+
+//-----------------------------------------
 
 #define _____xx_____       &none
 #define ____________       &trans
@@ -195,5 +218,105 @@ High Resolution scrolling settings
                                <&zip_rotate_scroll>,
                                <&zip_ble_report_rate_limit>;
         };  
+    };
+
+
+    &adaptive_feedback {
+		/delete-node/ layer_default;
+		/delete-node/ layer_extras;
+		/delete-node/ layer_device;
+		/delete-node/ layer_scroll;
+		/delete-node/ layer_snipe;
+		/delete-node/ layer_user;
+
+        layer_base {
+            event-type = "layer";
+            layer-index = <LAYER_BASE>;
+            colors = [COLOR_OFF];
+            persistent;
+        };
+
+        layer_extras {
+            event-type = "layer";
+            layer-index = <LAYER_EXTRAS>;
+            colors = [COLOR_OFF];
+            persistent;
+        };
+
+        layer_bluetooth {
+            event-type = "layer";
+            layer-index = <LAYER_BLUETOOTH>;
+            colors = [COLOR_BLUETOOTH];
+            animation = "flash";
+            flash-duration-ms = <30000>;
+            flash-ease-in-ms = <250>;
+            feedback-pattern = <PULSE_LAYER>;
+            persistent;
+        };
+
+        layer_scroll {
+            event-type = "layer";
+            layer-index = <LAYER_SCROLL>;
+            colors = [COLOR_OFF];
+            persistent;
+        };
+
+        layer_sniper {
+            event-type = "layer";
+            layer-index = <LAYER_SNIPER>;
+            colors = [COLOR_SNIPER];
+            persistent;
+        };
+
+        layer_config {
+            event-type = "layer";
+            layer-index = <LAYER_CONFIG>;
+            colors = [COLOR_CONFIG];
+            animation = "flash";
+            flash-duration-ms = <30000>;
+            flash-ease-in-ms = <250>;
+            feedback-pattern = <PULSE_LAYER>;
+            persistent;
+        };
+
+        evt_ble_1 {
+            colors = [COLOR_BT_CHANGE];
+            feedback-pattern = <PULSE_BT>;
+        };
+
+        evt_ble_2 {
+            colors = [COLOR_BT_CHANGE];
+            feedback-pattern = <PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_3 {
+            colors = [COLOR_BT_CHANGE];
+            flash-duration-ms = <500>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_4 {
+            colors = [COLOR_BT_CHANGE];
+            flash-duration-ms = <725>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_5 {
+            colors = [COLOR_BT_CHANGE];
+            flash-duration-ms = <950>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_6 {
+            label = "Bluetooth device";
+            event-type = "ble-profile";
+            colors = [COLOR_BT_CHANGE];
+            animation = "flash";
+            flash-duration-ms = <1175>;
+            flash-ease-in-ms = <100>;
+            flash-ease-out-ms = <100>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+            ble-profile-index = <5>;            
+        };
     };
 };
