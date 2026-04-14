@@ -220,8 +220,7 @@ High Resolution scrolling settings
         };  
     };
 
-
-    &adaptive_feedback {
+    adaptive_feedback {
 		/delete-node/ layer_default;
 		/delete-node/ layer_extras;
 		/delete-node/ layer_device;
