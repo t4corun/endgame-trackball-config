@@ -6,21 +6,20 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/shell/shell.h>
 #include <zephyr/sys/util.h>
-#include <zephyr/drivers/flash.h>
-#include <zephyr/storage/flash_map.h>
 #include <zephyr/sys/reboot.h>
 #include <zephyr/settings/settings.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/logging/log_ctrl.h>
 #include <string.h>
-#include <stdio.h>
 #include <stdlib.h>
+
 #include <zmk/events/usb_conn_state_changed.h>
 #include <zmk/event_manager.h>
 #include <zephyr/device.h>
 #include <zephyr/pm/device.h>
 
 #include "zephyr/bluetooth/bluetooth.h"
+#include "zephyr/drivers/flash.h"
 #include "zmk/endpoints.h"
 #include "zmk/settings.h"
 #include "zmk/keymap.h"
@@ -74,7 +73,7 @@ static int cmd_reboot(const struct shell *sh, const size_t argc, char **argv) {
 
 static int cmd_erase(const struct shell *sh, const size_t argc, char **argv) {
     shprint(sh, "I hope you know what you're doing.");
-    k_sleep(K_MSEC(20));
+    k_sleep(K_MSEC(100));
     bt_unpair(BT_ID_DEFAULT, NULL);
 
     for (int i = 0; i < 8; i++) {
@@ -97,14 +96,7 @@ static int cmd_erase(const struct shell *sh, const size_t argc, char **argv) {
         }
     }
 
-    const int rc = zmk_settings_erase();
-    if (rc < 0) {
-        LOG_ERR("Failed to erase settings: %d", rc);
-    } else {
-        shprint(sh, "Done.");
-    }
-
-    return rc;
+    return zmk_settings_erase();
 }
 
 static int cmd_layers(const struct shell *sh, const size_t argc, char **argv) {
@@ -122,7 +114,7 @@ static int cmd_layers(const struct shell *sh, const size_t argc, char **argv) {
 
 static uint8_t crc8_checksum(const uint8_t *data, const size_t len);
 
-static struct {
+struct restore_state {
     uint32_t start_addr;
     uint32_t total_size;
     uint32_t current_offset;
@@ -131,15 +123,22 @@ static struct {
     bool in_progress;
     const struct device *flash_dev;
     int saved_prio;
-} restore_state;
+};
+
+static struct restore_state *restore_state;
+
+static void log_restore_error(void) {
+    LOG_ERR("Unsuccessful data restoration!");
+    LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+}
 
 static int flush_restore_buffer(const struct shell *sh) {
-    if (restore_state.buffer_len == 0) {
+    if (restore_state->buffer_len == 0) {
         return 0;
     }
 
-    const uint32_t write_addr = restore_state.start_addr + restore_state.current_offset;
-    const uint32_t write_len = restore_state.buffer_len;
+    const uint32_t write_addr = restore_state->start_addr + restore_state->current_offset;
+    const uint32_t write_len = restore_state->buffer_len;
 
     /* Lock the scheduler for the entire erase+write sequence so no other
      * thread can preempt between the two operations and leave flash in an
@@ -149,14 +148,14 @@ static int flush_restore_buffer(const struct shell *sh) {
     struct flash_pages_info info;
     uint32_t erase_addr = write_addr;
     while (erase_addr < write_addr + write_len) {
-        int rc = flash_get_page_info_by_offs(restore_state.flash_dev, erase_addr, &info);
+        int rc = flash_get_page_info_by_offs(restore_state->flash_dev, erase_addr, &info);
         if (rc < 0) {
             k_sched_unlock();
             shprint(sh, "Failed to get flash page info at 0x%08x", erase_addr);
             return rc;
         }
         if (erase_addr == info.start_offset) {
-            rc = flash_erase(restore_state.flash_dev, info.start_offset, info.size);
+            rc = flash_erase(restore_state->flash_dev, info.start_offset, info.size);
             if (rc < 0) {
                 k_sched_unlock();
                 shprint(sh, "Failed to erase flash at 0x%08x", (uint32_t) info.start_offset);
@@ -166,7 +165,7 @@ static int flush_restore_buffer(const struct shell *sh) {
         erase_addr = info.start_offset + info.size;
     }
 
-    const int rc = flash_write(restore_state.flash_dev, write_addr, restore_state.buffer, write_len);
+    const int rc = flash_write(restore_state->flash_dev, write_addr, restore_state->buffer, write_len);
     k_sched_unlock();
 
     if (rc < 0) {
@@ -174,8 +173,8 @@ static int flush_restore_buffer(const struct shell *sh) {
         return rc;
     }
 
-    restore_state.current_offset += write_len;
-    restore_state.buffer_len = 0;
+    restore_state->current_offset += write_len;
+    restore_state->buffer_len = 0;
     return 0;
 }
 
@@ -204,36 +203,45 @@ static int cmd_restore(const struct shell *sh, const size_t argc, char **argv) {
             return -EINVAL;
         }
 
-        restore_state.flash_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_flash_controller));
-        if (!device_is_ready(restore_state.flash_dev)) {
+        restore_state = malloc(sizeof(*restore_state));
+        if (!restore_state) {
+            shprint(sh, "Failed to allocate restore state");
+            return -ENOMEM;
+        }
+
+        restore_state->flash_dev = DEVICE_DT_GET(DT_CHOSEN(zephyr_flash_controller));
+        if (!device_is_ready(restore_state->flash_dev)) {
             shprint(sh, "Flash device not ready");
+            k_free(restore_state);
+            restore_state = NULL;
             return -ENODEV;
         }
 
-        restore_state.start_addr = STORAGE_ADDR;
-        restore_state.total_size = STORAGE_SIZE;
-        restore_state.current_offset = 0;
-        restore_state.buffer_len = 0;
-        restore_state.in_progress = true;
+        restore_state->start_addr = STORAGE_ADDR;
+        restore_state->total_size = STORAGE_SIZE;
+        restore_state->current_offset = 0;
+        restore_state->buffer_len = 0;
+        restore_state->in_progress = true;
 
         /* Elevate to the highest cooperative priority for the entire restore
          * session so no preemptive thread can starve the restore process. */
-        restore_state.saved_prio = k_thread_priority_get(k_current_get());
+        restore_state->saved_prio = k_thread_priority_get(k_current_get());
         k_thread_priority_set(k_current_get(), K_HIGHEST_THREAD_PRIO);
 
         shprint(sh, "Restore started at 0x%08x, size %u", addr, size);
         return 0;
     }
 
-    if (!restore_state.in_progress) {
+    if (!restore_state || !restore_state->in_progress) {
         shprint(sh, "Restore not in progress");
         return -EAGAIN;
     }
 
     if (argc >= 3 && strcmp(argv[1], "BACKUP") == 0 && strcmp(argv[2], "END") == 0) {
         const int rc = flush_restore_buffer(sh);
-        k_thread_priority_set(k_current_get(), restore_state.saved_prio);
-        restore_state.in_progress = false;
+        k_thread_priority_set(k_current_get(), restore_state->saved_prio);
+        k_free(restore_state);
+        restore_state = NULL;
         if (rc < 0) {
             return rc;
         }
@@ -249,8 +257,7 @@ static int cmd_restore(const struct shell *sh, const size_t argc, char **argv) {
 
     if (!colon || !hash || colon >= hash) {
         shprint(sh, "Invalid data line format");
-        LOG_ERR("Unsuccessful data restoration!");
-        LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+        log_restore_error();
         return -EINVAL;
     }
 
@@ -261,11 +268,10 @@ static int cmd_restore(const struct shell *sh, const size_t argc, char **argv) {
     hexdata[sizeof(hexdata) - 1] = '\0';
     const uint32_t crc_val = strtoul(hash + 1, NULL, 16);
 
-    if (offset != restore_state.current_offset + restore_state.buffer_len) {
-        shprint(sh, "Offset mismatch: expected %08x, got %08x", 
-                restore_state.current_offset + restore_state.buffer_len, offset);
-        LOG_ERR("Unsuccessful data restoration!");
-        LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+    if (offset != restore_state->current_offset + restore_state->buffer_len) {
+        shprint(sh, "Offset mismatch: expected %08x, got %08x",
+                restore_state->current_offset + restore_state->buffer_len, offset);
+        log_restore_error();
         return -EINVAL;
     }
 
@@ -273,8 +279,7 @@ static int cmd_restore(const struct shell *sh, const size_t argc, char **argv) {
     size_t chunk_len = strlen(hexdata) / 2;
     if (chunk_len > BACKUP_CHUNK_SIZE) {
         shprint(sh, "Chunk too large");
-        LOG_ERR("Unsuccessful data restoration!");
-        LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+        log_restore_error();
         return -EINVAL;
     }
 
@@ -288,28 +293,25 @@ static int cmd_restore(const struct shell *sh, const size_t argc, char **argv) {
 
     if (crc8_checksum(chunk, chunk_len) != (uint8_t)crc_val) {
         shprint(sh, "CRC mismatch at offset %08x", offset);
-        LOG_ERR("Unsuccessful data restoration!");
-        LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+        log_restore_error();
         return -EBADMSG;
     }
 
-    if (restore_state.buffer_len + chunk_len > RESTORE_BUFFER_SIZE) {
+    if (restore_state->buffer_len + chunk_len > RESTORE_BUFFER_SIZE) {
         const int rc = flush_restore_buffer(sh);
         if (rc < 0) {
-            LOG_ERR("Unsuccessful data restoration!");
-            LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+            log_restore_error();
             return rc;
         }
     }
 
-    memcpy(restore_state.buffer + restore_state.buffer_len, chunk, chunk_len);
-    restore_state.buffer_len += chunk_len;
+    memcpy(restore_state->buffer + restore_state->buffer_len, chunk, chunk_len);
+    restore_state->buffer_len += chunk_len;
 
-    if (restore_state.buffer_len >= RESTORE_BUFFER_SIZE) {
+    if (restore_state->buffer_len >= RESTORE_BUFFER_SIZE) {
         const int rc = flush_restore_buffer(sh);
         if (rc < 0) {
-            LOG_ERR("Unsuccessful data restoration!");
-            LOG_ERR("Try again or execute `board erase` — your device won't boot otherwise!");
+            log_restore_error();
         }
         return rc;
     }
@@ -390,8 +392,8 @@ static int cmd_backup(const struct shell *sh, const size_t argc, char **argv) {
         return -EPERM;
     }
     
-    const uint32_t storage_addr = STORAGE_ADDR;
-    const uint32_t storage_size = STORAGE_SIZE;
+    const uint32_t storage_addr = 0x0006c000;
+    const uint32_t storage_size = 0x00008000;
     const uint32_t saved_level = log_filter_set(NULL, CONFIG_LOG_DOMAIN_ID, 0, LOG_LEVEL_NONE);
 
     shprint(sh, "");
