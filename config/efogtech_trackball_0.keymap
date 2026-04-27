@@ -192,30 +192,42 @@ High Resolution scrolling settings
     };
 
     trackball {
-        input-processors = <&zip_x_scaler 8 10>,
-						   <&zip_y_scaler 8 10>,
-						   <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
+
+		/* without acceleration
+		   xy     7, 10 (70%)
+		   scroll 1, 16 (6.25%)
+		*/
+        input-processors = <&zip_xy_scaler 7 10>,
+						   <&zip_scroll_scaler 1 16>,
                            <&zip_pointer_accel>,
-                           //<&zip_scroll_accel>,
+                           <&zip_scroll_accel>,
                            <&zip_rotate_pointer>,
                            <&zip_rotate_scroll>,
                            <&zip_ble_report_rate_limit>;
 
+		/* without acceleration
+		   xy     1, 16 (6.25%)
+		*/
         scroll {
             layers = <LAYER_SCROLL>;
-            input-processors = <&zip_x_scaler SCROLL_H_MULTI SCROLL_H_DIVISOR>, 
-                               <&zip_y_scaler SCROLL_V_MULTI SCROLL_V_DIVISOR>,
+            input-processors = <&zip_x_scaler 1 16>, 
+                               <&zip_y_scaler 1 16>,
                                <&zip_axis_clamper>,
                                <&zip_xy_to_scroll_mapper>,
                                <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
-                               //<&zip_dragscroll_accel>,
+                               <&zip_dragscroll_accel>,
                                <&zip_rotate_scroll>,
                                <&zip_ble_report_rate_limit>;
         };
 
+		/* without acceleration
+		   xy     1, 4  (25%)
+		   scroll 1, 16 (6.25%)
+		*/
         sniper {
             layers = <LAYER_SNIPER>;
-            input-processors = <&zip_xy_scaler SNIPE_MULTIPLIER SNIPE_DIVISOR>,
+            input-processors = <&zip_xy_scaler 1 4>,
+							   <&zip_scroll_scaler 1 16>,
                                <&zip_rotate_pointer>,
                                <&zip_rotate_scroll>,
                                <&zip_ble_report_rate_limit>;
