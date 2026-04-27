@@ -39,7 +39,7 @@ High Resolution scrolling settings
 */
 
 #define TWIST_MULTIPLIER   1
-#define TWIST_DIVISOR      14
+#define TWIST_DIVISOR      16
 
 #define SCROLL_V_MULTI     1
 #define SCROLL_V_DIVISOR   14
@@ -192,7 +192,9 @@ High Resolution scrolling settings
     };
 
     trackball {
-        input-processors = <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
+        input-processors = <&zip_x_scaler 8 10>,
+						   <&zip_y_scaler 8 10>,
+						   <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
                            <&zip_pointer_accel>,
                            //<&zip_scroll_accel>,
                            <&zip_rotate_pointer>,
