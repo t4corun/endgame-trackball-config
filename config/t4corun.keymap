@@ -98,7 +98,8 @@
     };
 
     trackball {
-        input-processors =  <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
+        input-processors =  <&zip_xy_scaler 1 2>,
+                            <&zip_scroll_scaler 1 16>,
                             <&zip_pointer_accel>,
                             <&zip_scroll_accel>,
                             <&zip_rotate_pointer>,
@@ -108,7 +109,7 @@
 
         scroll {
             layers = <LAYER_SCROLL>;
-            input-processors =  <&zip_xy_scaler SCROLL_MULTIPLIER SCROLL_DIVISOR>,
+            input-processors =  <&zip_xy_scaler 1 16>,
                                 <&zip_axis_clamper>,
                                 <&zip_xy_to_scroll_mapper>,
                                 <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
@@ -120,7 +121,8 @@
 
         snipe {
             layers = <LAYER_SNIPE>;
-            input-processors =  <&zip_xy_scaler SNIPE_MULTIPLIER SNIPE_DIVISOR>,
+            input-processors =  <&zip_xy_scaler 1 4>,
+                                <&zip_scroll_scaler 1 16>,
                                 <&zip_rotate_pointer>,
                                 <&zip_rotate_scroll>,
                                 <&esb_ip>,
