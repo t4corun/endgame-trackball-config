@@ -1,0 +1,130 @@
+#include "t4corun.h"
+#include "feedback.dtsi"
+
+/ {
+    reset {
+        /delete-node/ keymap;
+        /delete-node/ trackball;
+    }
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            display-name = "Default";
+            DECLARE_ENCODERS;
+            bindings = <
+                // buttons
+                DEVICE_ENT      DRAG_SCROLL_ESC
+                &mkp MCLK       &mkp RCLK
+                &mkp LCLK       SNIPER
+                EXTRAS_MB4      USER_MB5
+
+                // rotary encoders
+                ENCODER_UP
+                ENCODER_DOWN
+            >;
+        };
+
+        layer1 {
+            display-name = "Extras";
+            DECLARE_ENCODERS;
+            bindings = <
+                &bst_copy       &bst_paste
+                &bst_cut        &bst_undo
+                &bst_undo       &bst_copy
+                ____________    &bst_paste
+
+                ENCODER_UP
+                ENCODER_DOWN
+            >;
+        };
+
+        layer2 {
+            display-name = "Device";
+            DECLARE_ENCODERS;
+            bindings = <
+                ____________    BT_1
+                BT_CLEAR        BT_2
+                BT_6            BT_3
+                BT_5            BT_4
+
+                ENCODER_NONE
+                ENCODER_NONE
+            >;
+        };
+
+        layer3 {
+            display-name = "Scroll";
+            DECLARE_ENCODERS;
+            bindings = <
+                CYCLE_POLLRT    ____________
+                _____xx_____    TWIST_UP
+                ____________    TWIST_DOWN
+                POINT_DOWN      POINT_UP
+
+                POINT_DOWN      TWIST_UP
+                POINT_UP        TWIST_DOWN
+            >;
+        };
+
+        layer4 {
+            display-name = "Snipe";
+            DECLARE_ENCODERS;
+            bindings = <
+                ____________    ____________
+                ____________    ____________
+                ____________    DEFAULT
+                ____________    ____________
+
+                ENCODER_UP
+                ENCODER_DOWN
+            >;
+        };
+
+        layer5 {
+            display-name = "User";
+            DECLARE_ENCODERS;
+            bindings = <
+                MUI_BT          SOFT_OFF
+                OS_SWAP         _____xx_____
+                AF_TOGGLE       _____xx_____
+                ZMK_STUDIO      ____________
+
+                ENCODER_UP
+                ENCODER_DOWN
+            >;
+        };
+    };
+
+    trackball {
+        input-processors =  <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
+                            <&zip_pointer_accel>,
+                            <&zip_scroll_accel>,
+                            <&zip_rotate_pointer>,
+                            <&zip_rotate_scroll>,
+                            <&esb_ip>,
+                            <&zip_ble_report_rate_limit>;
+
+        scroll {
+            layers = <LAYER_SCROLL>;
+            input-processors =  <&zip_xy_scaler SCROLL_MULTIPLIER SCROLL_DIVISOR>,
+                                <&zip_axis_clamper>,
+                                <&zip_xy_to_scroll_mapper>,
+                                <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
+                                <&zip_dragscroll_accel>,
+                                <&zip_rotate_scroll>,
+                                <&esb_ip>,
+                                <&zip_ble_report_rate_limit>;
+        };
+
+        snipe {
+            layers = <LAYER_SNIPE>;
+            input-processors =  <&zip_xy_scaler SNIPE_MULTIPLIER SNIPE_DIVISOR>,
+                                <&zip_rotate_pointer>,
+                                <&zip_rotate_scroll>,
+                                <&esb_ip>,
+                                <&zip_ble_report_rate_limit>;
+        };
+    };
+};
