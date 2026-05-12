@@ -7,7 +7,7 @@
      * 8ms: 125Hz
      */
     rrl {
-        values-ms = values-ms = <0 1 2 4 8>;
+        values-ms = <0 1 2 4 8>;
     };
 
     /*
