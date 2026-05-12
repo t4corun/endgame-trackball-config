@@ -5,9 +5,9 @@
     reset {
         /delete-node/ keymap;
         /delete-node/ trackball;
-    }
+    };
 
-    keymap {
+    my_keymap {
         compatible = "zmk,keymap";
 
         default_layer {
@@ -97,7 +97,7 @@
         };
     };
 
-    trackball {
+    my_trackball {
         input-processors =  <&zip_scroll_scaler TWIST_MULTIPLIER TWIST_DIVISOR>,
                             <&zip_pointer_accel>,
                             <&zip_scroll_accel>,
