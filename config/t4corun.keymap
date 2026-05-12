@@ -98,7 +98,7 @@
     };
 
     trackball {
-        input-processors =  <&zip_xy_scaler 1 2>,
+        input-processors =  <&zip_xy_scaler 1 5>,
                             <&zip_scroll_scaler 1 16>,
                             <&zip_pointer_accel>,
                             <&zip_scroll_accel>,
@@ -121,7 +121,7 @@
 
         snipe {
             layers = <LAYER_SNIPE>;
-            input-processors =  <&zip_xy_scaler 1 4>,
+            input-processors =  <&zip_xy_scaler 1 8>,
                                 <&zip_scroll_scaler 1 16>,
                                 <&zip_rotate_pointer>,
                                 <&zip_rotate_scroll>,
