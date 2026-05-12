@@ -60,7 +60,7 @@
             DECLARE_ENCODERS;
             bindings = <
                 CYCLE_POLLRT    ____________
-                _____xx_____    TWIST_UP
+                TWIST_TOGGLE    TWIST_UP
                 ____________    TWIST_DOWN
                 POINT_DOWN      POINT_UP
 

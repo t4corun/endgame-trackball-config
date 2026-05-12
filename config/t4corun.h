@@ -15,6 +15,7 @@
 #define ENCODER_NONE       _____xx_____ _____xx_____
 
 #define CYCLE_POLLRT       &rrl 1
+#define TWIST_TOGGLE       &p2sm_twist_toggle
 #define TWIST_UP           &scrlsens P2SM_INC 1
 #define TWIST_DOWN         &scrlsens P2SM_DEC 1
 #define POINT_UP           &sens     P2SM_INC 1
