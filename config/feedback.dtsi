@@ -1,4 +1,4 @@
-{
+/ {
     adaptive_feedback {
         /delete-node/ layer_default;
         /delete-node/ layer_extras;
