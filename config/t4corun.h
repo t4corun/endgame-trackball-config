@@ -20,13 +20,13 @@
 #define POINT_UP           &sens     P2SM_INC 1
 #define POINT_DOWN         &sens     P2SM_DEC 1
 
+#define OUTPUT_TOG         &out OUT_TOG
 #define BT_CLEAR           &bt  BT_CLR
 #define BT_1               &bt  BT_SEL 0
 #define BT_2               &bt  BT_SEL 1
 #define BT_3               &bt  BT_SEL 2
 #define BT_4               &bt  BT_SEL 3
 #define BT_5               &bt  BT_SEL 4
-#define BT_6               &bt  BT_SEL 5
 
 #define SOFT_OFF           &soft_off
 #define AF_TOGGLE          &af_toggle AF_TOG
@@ -36,8 +36,17 @@
 
 #define COLOR_OFF          00 00 00
 #define COLOR_DEVICE       80 00 FF
-#define COLOR_SNIPE        ff 00 00
+#define COLOR_SNIPE        FF 00 00
 #define COLOR_USER         00 80 FF
-#define COLOR_BT_CHANGE    00 ff 40
+#define COLOR_BT_CHANGE    00 FF 40
 #define PULSE_BT           50 175
 #define PULSE_LAYER        60
+
+#define TWIST_MPLY         1
+#define TWIST_DIV          10
+
+#define SCROLL_MPLY        1
+#define SCROLL_DIV         3
+
+#define SNIPE_MPLY         1
+#define SNIPE_DIV          4

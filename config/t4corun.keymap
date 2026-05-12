@@ -1,5 +1,6 @@
 #include "t4corun.h"
-#include "feedback.dtsi"
+#include "t4co_feedback.dtsi"
+#include "t4co_behaviors.dtsi"
 
 / {
     reset {
@@ -46,7 +47,7 @@
             bindings = <
                 ____________    BT_1
                 BT_CLEAR        BT_2
-                BT_6            BT_3
+                OUTPUT_TOG      BT_3
                 BT_5            BT_4
 
                 ENCODER_NONE
@@ -98,8 +99,7 @@
     };
 
     trackball {
-        input-processors =  <&zip_xy_scaler 1 5>,
-                            <&zip_scroll_scaler 1 16>,
+        input-processors =  <&zip_scroll_scaler TWIST_MPLY TWIST_DIV>,
                             <&zip_pointer_accel>,
                             <&zip_scroll_accel>,
                             <&zip_rotate_pointer>,
@@ -109,8 +109,7 @@
 
         scroll {
             layers = <LAYER_SCROLL>;
-            input-processors =  <&zip_xy_scaler 1 5>,
-                                <&zip_scroll_scaler 1 16>,
+            input-processors =  <&zip_xy_scaler SCROLL_MPLY SCROLL_DIV>,
                                 <&zip_axis_clamper>,
                                 <&zip_xy_to_scroll_mapper>,
                                 <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
@@ -122,8 +121,7 @@
 
         snipe {
             layers = <LAYER_SNIPE>;
-            input-processors =  <&zip_xy_scaler 1 10>,
-                                <&zip_scroll_scaler 1 16>,
+            input-processors =  <&zip_xy_scaler SNIPE_MPLY SNIPE_DIV>,
                                 <&zip_rotate_pointer>,
                                 <&zip_rotate_scroll>,
                                 <&esb_ip>,
