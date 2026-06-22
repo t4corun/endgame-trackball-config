@@ -11,10 +11,10 @@ manifest:
       import: app/west.yml
     - name: zmk-paw3395-driver
       remote: efogdev
-      revision: "575a839"
+      revision: "69044e7"
     - name: zmk-pointer-2s-mixer
       remote: efogdev
-      revision: "9996947"
+      revision: "85872c1"
     - name: zmk-axis-clamper
       remote: efogdev
       revision: "637719f"
@@ -23,7 +23,7 @@ manifest:
       revision: "20e0742"
     - name: zmk-ec11-ish-driver
       remote: efogdev
-      revision: "e3850cd"
+      revision: "404ae01"
     - name: zmk-auto-hold
       remote: efogdev
       revision: "8b11f48"
@@ -38,7 +38,7 @@ manifest:
       revision: "f01e0d3"
     - name: zmk-acceleration-curves
       remote: efogdev
-      revision: "7d24e81"
+      revision: "80007b4"
     - name: zmk-input-processor-rotate-plane
       remote: efogdev
       revision: "b0b2684"
@@ -53,7 +53,7 @@ manifest:
       revision: "6322b7a"
     - name: zmk-esb-endpoint
       remote: efogdev
-      revision: "3eacee6"
+      revision: "225a258"
       submodules: true
     - name: zmk-feedback-common
       remote: efogdev
