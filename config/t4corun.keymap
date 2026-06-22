@@ -17,8 +17,8 @@
             bindings = <
                 // buttons
                 DEVICE_ENT      DRAG_SCROLL_ESC
-                &mkp MCLK       &mkp RCLK
-                &mkp LCLK       SNIPER
+                SNIPER          &mkp RCLK
+                &mkp LCLK       &mkp MCLK
                 EXTRAS_MB4      USER_MB5
 
                 // rotary encoders
@@ -31,10 +31,10 @@
             display-name = "Extras";
             DECLARE_ENCODERS;
             bindings = <
-                &bst_copy       &bst_paste
-                &bst_cut        &bst_undo
-                &bst_undo       &bst_copy
-                ____________    &bst_paste
+                _____xx_____    &bst_paste
+                _____xx_____    &bst_copy
+                &bst_undo       &bst_cut
+                ____________    &bst_undo
 
                 ENCODER_UP
                 ENCODER_DOWN
@@ -60,12 +60,12 @@
             DECLARE_ENCODERS;
             bindings = <
                 CYCLE_POLLRT    ____________
-                TWIST_TOGGLE    TWIST_UP
-                ____________    TWIST_DOWN
-                POINT_DOWN      POINT_UP
+                POINT_UP        TWIST_UP
+                POINT_DOWN      TWIST_DOWN
+                _____xx_____    TWIST_TOGGLE
 
-                POINT_DOWN      TWIST_UP
-                POINT_UP        TWIST_DOWN
+                ENCODER_NONE
+                ENCODER_NONE
             >;
         };
 
@@ -74,8 +74,8 @@
             DECLARE_ENCODERS;
             bindings = <
                 ____________    ____________
+                DEFAULT         ____________
                 ____________    ____________
-                ____________    DEFAULT
                 ____________    ____________
 
                 ENCODER_UP
