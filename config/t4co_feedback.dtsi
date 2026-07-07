@@ -1,0 +1,100 @@
+/ {
+    adaptive_feedback {
+        /delete-node/ layer_default;
+        /delete-node/ layer_extras;
+        /delete-node/ layer_device;
+        /delete-node/ layer_scroll;
+        /delete-node/ layer_snipe;
+        /delete-node/ layer_user;
+
+        layer_default {
+            event-type = "layer";
+            layer-index = <LAYER_DEFAULT>;
+            colors = [COLOR_OFF];
+            persistent;
+        };
+
+        layer_extras {
+            event-type = "layer";
+            layer-index = <LAYER_EXTRAS>;
+            colors = [COLOR_OFF];
+            persistent;
+        };
+
+        layer_device {
+            event-type = "layer";
+            layer-index = <LAYER_DEVICE>;
+            colors = [COLOR_DEVICE];
+            animation = "flash";
+            flash-duration-ms = <30000>;
+            flash-ease-in-ms = <250>;
+            feedback-pattern = <PULSE_LAYER>;
+            persistent;
+        };
+
+        layer_scroll {
+            event-type = "layer";
+            layer-index = <LAYER_SCROLL>;
+            colors = [COLOR_OFF];
+            persistent;
+        };
+
+        layer_snipe {
+            event-type = "layer";
+            layer-index = <LAYER_SNIPE>;
+            colors = [COLOR_SNIPE];
+            persistent;
+        };
+
+        layer_user {
+            event-type = "layer";
+            layer-index = <LAYER_USER>;
+            colors = [COLOR_USER];
+            animation = "flash";
+            flash-duration-ms = <30000>;
+            flash-ease-in-ms = <250>;
+            feedback-pattern = <PULSE_LAYER>;
+            persistent;
+        };
+
+        evt_ble_1 {
+            colors = [COLOR_BT_CHANGE];
+            feedback-pattern = <PULSE_BT>;
+        };
+
+        evt_ble_2 {
+            colors = [COLOR_BT_CHANGE];
+            feedback-pattern = <PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_3 {
+            colors = [COLOR_BT_CHANGE];
+            flash-duration-ms = <500>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_4 {
+            colors = [COLOR_BT_CHANGE];
+            flash-duration-ms = <725>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_5 {
+            colors = [COLOR_BT_CHANGE];
+            flash-duration-ms = <950>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+        };
+
+        evt_ble_6 {
+            label = "Bluetooth device";
+            event-type = "ble-profile";
+            colors = [COLOR_BT_CHANGE];
+            animation = "flash";
+            flash-duration-ms = <1175>;
+            flash-ease-in-ms = <100>;
+            flash-ease-out-ms = <100>;
+            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+            ble-profile-index = <5>;            
+        };
+    };
+};

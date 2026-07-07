@@ -129,3 +129,5 @@
 		};
 	};
 };
+
+#include "t4corun.keymap"

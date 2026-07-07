@@ -1,0 +1,35 @@
+/ {
+    /*
+     * 0ms: No delay? report as fast as possible
+     * 1ms: 1000Hz
+     * 2ms: 500Hz
+     * 4ms: 250Hz
+     * 8ms: 125Hz
+     */
+    rrl {
+        values-ms = <0 1 2 4 8>;
+    };
+
+    /*
+     * 125 one step: 0.125
+     * 1   min value: 0.1
+     * 8   max value: 1 (8 steps)
+     */
+
+    /*
+     * 50 step: 0.05
+     * 1 min value: 0.05
+     * 7 max value: 0.35
+     */
+    sens {
+        step = <50>;
+        min-step = <1>;
+        max-step = <7>;
+    };
+
+    scrlsens {
+        step = <50>;
+        min-step = <1>;
+        max-step = <7>;
+    };
+};
