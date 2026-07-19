@@ -27,6 +27,7 @@
 #define BT_3               &bt  BT_SEL 2
 #define BT_4               &bt  BT_SEL 3
 #define BT_5               &bt  BT_SEL 4
+#define BT_6               &bt  BT_SEL 5 // dongle slot
 
 #define SOFT_OFF           &soft_off
 #define AF_TOGGLE          &af_toggle AF_TOG

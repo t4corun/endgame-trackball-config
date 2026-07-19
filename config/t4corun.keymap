@@ -84,7 +84,7 @@
             bindings = <
                 ____________    BT_1
                 BT_CLEAR        BT_2
-                OUTPUT_TOG      BT_3
+                BT_6            BT_3
                 BT_5            BT_4
 
                 ENCODER_NONE
@@ -125,7 +125,7 @@
             DECLARE_ENCODERS;
             bindings = <
                 MUI_BT          SOFT_OFF
-                _____xx_____    _____xx_____
+                _____xx_____    OUTPUT_TOG
                 AF_TOGGLE       _____xx_____
                 ZMK_STUDIO      ____________
 
