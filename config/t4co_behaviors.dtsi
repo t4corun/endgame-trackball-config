@@ -1,5 +1,38 @@
 / {
     /*
+     * removing unused nodes to save memoryks
+     */
+    behaviors {
+        /delete-node/ cdch;
+        /delete-node/ cdc;
+        /delete-node/ ltm;
+        /delete-node/ ltmkp;
+        /delete-node/ bst_copy;
+        /delete-node/ bst_paste;
+        /delete-node/ bst_cut;
+        /delete-node/ bst_undo;
+        /delete-node/ bst_tog;
+    };
+
+    macros {
+        /delete-node/ winlin_copy;
+        /delete-node/ macos_copy;
+        /delete-node/ winlin_paste;
+        /delete-node/ macos_paste;
+        /delete-node/ winlin_cut;
+        /delete-node/ macos_cut;
+        /delete-node/ winlin_undo;
+        /delete-node/ macos_undo;
+        /delete-node/ scroll_down;
+        /delete-node/ scroll_up;
+        /delete-node/ scroll_left;
+        /delete-node/ scroll_right;
+    };
+};
+
+
+/ {
+    /*
      * 0ms: No delay? report as fast as possible
      * 1ms: 1000Hz
      * 2ms: 500Hz

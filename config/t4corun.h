@@ -2,9 +2,8 @@
 
 #define DEFAULT            &to  LAYER_DEFAULT        // default
 #define SNIPER             &to  LAYER_SNIPE          // sniper
-#define DRAG_SCROLL_ESC    &ltmkp LAYER_SCROLL ESC   // Scroll
-#define DEVICE_ENT         &ltmkp LAYER_DEVICE ENTER // BT settings
-#define EXTRAS_MB4         &ltm LAYER_EXTRAS MB4     // os swap UCCPR
+#define DRAG_SCROLL        &mo  LAYER_SCROLL
+#define DEVICE             &mo  LAYER_DEVICE
 #define USER_MB5           &ltm LAYER_USER MB5       // config
 
 #define _____xx_____       &none
