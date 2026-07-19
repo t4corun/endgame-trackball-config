@@ -31,7 +31,7 @@
 #define SOFT_OFF           &soft_off
 #define AF_TOGGLE          &af_toggle AF_TOG
 #define ZMK_STUDIO         &studio_unlock
-#define OS_SWAP            &bst_tog ZBS_TOG
+//#define OS_SWAP            &bst_tog ZBS_TOG
 #define MUI_BT             &zbs_adv
 
 #define COLOR_OFF          00 00 00

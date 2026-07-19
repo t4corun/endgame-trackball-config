@@ -12,9 +12,8 @@
      * removing unused behaviors to save memory
      */
     behaviors {
-        /delete-node/ cdch;
-        /delete-node/ cdc;
-        /delete-node/ ltm;
+        /delete-node/ click-double-click-hold;
+        /delete-node/ click-double-click;
         /delete-node/ ltmkp;
         /delete-node/ bst_copy;
         /delete-node/ bst_paste;
@@ -121,7 +120,7 @@
             DECLARE_ENCODERS;
             bindings = <
                 MUI_BT          SOFT_OFF
-                OS_SWAP         _____xx_____
+                _____xx_____    _____xx_____
                 AF_TOGGLE       _____xx_____
                 ZMK_STUDIO      ____________
 
