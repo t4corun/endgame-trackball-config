@@ -6,6 +6,8 @@
         /delete-node/ layer_scroll;
         /delete-node/ layer_snipe;
         /delete-node/ layer_user;
+        /delete-node/ os_switched;
+        /delete-node/ keymap_switched;
 
         layer_default {
             event-type = "layer";
@@ -94,7 +96,7 @@
             flash-ease-in-ms = <100>;
             flash-ease-out-ms = <100>;
             feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
-            ble-profile-index = <5>;            
+            ble-profile-index = <5>;
         };
     };
 };

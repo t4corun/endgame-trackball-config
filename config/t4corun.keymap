@@ -3,14 +3,19 @@
 #include "t4co_behaviors.dtsi"
 
 / {
+    /*
+     * This section deletes the keymap and trackball nodes so
+     * I can replace them
+     *
+     * It also removes unused behaviors and macros to save memory
+     * I find I don't use all the OS Swappable UCCPR macros
+     */
+
     reset {
         /delete-node/ keymap;
         /delete-node/ trackball;
     };
 
-    /*
-     * removing unused behaviors to save memory
-     */
     behaviors {
         /delete-node/ click-double-click-hold;
         /delete-node/ click-double-click;
@@ -22,9 +27,6 @@
         /delete-node/ bst_tog;
     };
 
-    /*
-     * removing unused macros to save memory
-     */
     macros {
         /delete-node/ winlin_copy;
         /delete-node/ macos_copy;
@@ -39,7 +41,10 @@
         /delete-node/ scroll_left;
         /delete-node/ scroll_right;
     };
+};
 
+
+/ {
     keymap {
         compatible = "zmk,keymap";
 
@@ -51,7 +56,7 @@
                 DEVICE          DRAG_SCROLL
                 SNIPER          &mkp RCLK
                 &mkp LCLK       &mkp MCLK
-                &mkp LCLK       USER_MB5
+                &mkp MB4        USER_MB5
 
                 // rotary encoders
                 ENCODER_UP
