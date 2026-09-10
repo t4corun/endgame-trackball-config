@@ -53,8 +53,8 @@
             DECLARE_ENCODERS;
             bindings = <
                 // buttons
-                DEVICE          DRAG_SCROLL
-                SNIPER          &mkp RCLK
+                SNIPER          DRAG_SCROLL
+                DEVICE          &mkp RCLK
                 &mkp LCLK       &mkp MCLK
                 &mkp MB4        USER_MB5
 
@@ -82,10 +82,10 @@
             display-name = "Device";
             DECLARE_ENCODERS;
             bindings = <
-                ____________    BT_1
-                BT_CLEAR        BT_2
-                BT_6            BT_3
-                BT_5            BT_4
+                BT_1            BT_2
+                ____________    BT_3
+                BT_CLEAR        BT_4
+                BT_6            BT_5
 
                 ENCODER_NONE
                 ENCODER_NONE
@@ -110,8 +110,8 @@
             display-name = "Snipe";
             DECLARE_ENCODERS;
             bindings = <
-                ____________    ____________
                 DEFAULT         ____________
+                ____________    ____________
                 ____________    ____________
                 ____________    ____________
 
@@ -136,17 +136,18 @@
     };
 
     trackball {
-        input-processors =  <&zip_scroll_scaler TWIST_MPLY TWIST_DIV>,
+        //input-processors =  <&zip_scroll_scaler TWIST_MPLY TWIST_DIV>,
+        input-processors =  <&zip_bistable_twist_scaler>,
                             <&zip_pointer_accel>,
                             <&zip_scroll_accel>,
                             <&zip_rotate_pointer>,
-                            <&zip_rotate_scroll>,
+                            //<&zip_rotate_scroll>,
                             <&esb_ip>,
                             <&zip_ble_report_rate_limit>;
 
         scroll {
             layers = <LAYER_SCROLL>;
-            input-processors =  <&zip_xy_scaler SCROLL_MPLY SCROLL_DIV>,
+            input-processors =  <&zip_bistable_scroll_xy_scaler>,
                                 <&zip_axis_clamper>,
                                 <&zip_xy_to_scroll_mapper>,
                                 <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>,
@@ -158,9 +159,10 @@
 
         snipe {
             layers = <LAYER_SNIPE>;
-            input-processors =  <&zip_xy_scaler SNIPE_MPLY SNIPE_DIV>,
+            //input-processors =  <&zip_xy_scaler SNIPE_MPLY SNIPE_DIV>,
+            input-processors =  <&zip_bistable_snipe_scaler>,
                                 <&zip_rotate_pointer>,
-                                <&zip_rotate_scroll>,
+                                //<&zip_rotate_scroll>,
                                 <&esb_ip>,
                                 <&zip_ble_report_rate_limit>;
         };
