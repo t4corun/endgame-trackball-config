@@ -18,7 +18,7 @@
 
     behaviors {
         /delete-node/ click-double-click-hold;
-        /delete-node/ click-double-click;
+        /delete-node/ click-double-click-copy-paste;
         /delete-node/ ltmkp;
         /delete-node/ bst_copy;
         /delete-node/ bst_paste;
