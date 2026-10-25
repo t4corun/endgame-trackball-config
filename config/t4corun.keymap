@@ -54,8 +54,8 @@
             bindings = <
                 // buttons
                 SNIPER          DRAG_SCROLL
-                DEVICE          &mkp RCLK
-                &mkp LCLK       &mkp MCLK
+                &mkp MCLK       &mkp RCLK
+                &mkp LCLK       DEVICE
                 &mkp MB4        USER_MB5
 
                 // rotary encoders
@@ -82,10 +82,10 @@
             display-name = "Device";
             DECLARE_ENCODERS;
             bindings = <
-                BT_1            BT_2
-                ____________    BT_3
-                BT_CLEAR        BT_4
-                BT_6            BT_5
+                BT_4            BT_5
+                BT_3            BT_6
+                BT_2            ____________
+                BT_1            BT_CLEAR
 
                 ENCODER_NONE
                 ENCODER_NONE
