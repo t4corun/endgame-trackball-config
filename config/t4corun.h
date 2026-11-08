@@ -4,7 +4,9 @@
 #define SNIPER             &to  LAYER_SNIPE          // sniper
 #define DRAG_SCROLL        &mo  LAYER_SCROLL
 #define DEVICE             &mo  LAYER_DEVICE
-#define USER_MB5           &ltm LAYER_USER MB5       // config
+#define DRAG_MB4           &ltm LAYER_SCROLL MB4
+#define USER_MB5           &ltm LAYER_USER   MB5     // config
+
 
 #define _____xx_____       &none
 #define ____________       &trans
@@ -40,8 +42,8 @@
 #define COLOR_SNIPE        FF 00 00
 #define COLOR_USER         00 80 FF
 #define COLOR_BT_CHANGE    00 FF 40
-#define PULSE_BT           50 175
-#define PULSE_LAYER        60
+#define PULSE_BT           50 250
+#define PULSE_LAYER        50
 
 #define TWIST_MPLY         1
 #define TWIST_DIV          10
