@@ -53,10 +53,10 @@
             DECLARE_ENCODERS;
             bindings = <
                 // buttons
-                SNIPER          &mkp MCLK
-                _____xx_____    &mkp RCLK
+                _____xx_____    DRAG_MB3
+                SNIPER          &mkp RCLK
                 &mkp LCLK       DEVICE
-                DRAG_MB4        USER_MB5
+                &mkp MB4        USER_MB5
 
                 // rotary encoders
                 ENCODER_UP
@@ -96,10 +96,10 @@
             display-name = "Scroll";
             DECLARE_ENCODERS;
             bindings = <
-                CYCLE_POLLRT    _____xx_____
+                CYCLE_POLLRT    ____________
                 POINT_UP        TWIST_UP
                 POINT_DOWN      TWIST_DOWN
-                ____________    TWIST_TOGGLE
+                _____xx_____    TWIST_TOGGLE
 
                 ENCODER_NONE
                 ENCODER_NONE
@@ -110,8 +110,8 @@
             display-name = "Snipe";
             DECLARE_ENCODERS;
             bindings = <
-                DEFAULT         ____________
                 ____________    ____________
+                DEFAULT         ____________
                 ____________    ____________
                 ____________    ____________
 

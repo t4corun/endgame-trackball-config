@@ -2,9 +2,8 @@
 
 #define DEFAULT            &to  LAYER_DEFAULT        // default
 #define SNIPER             &to  LAYER_SNIPE          // sniper
-#define DRAG_SCROLL        &mo  LAYER_SCROLL
 #define DEVICE             &mo  LAYER_DEVICE
-#define DRAG_MB4           &ltm LAYER_SCROLL MB4
+#define DRAG_MB3           &ltm LAYER_SCROLL MB3
 #define USER_MB5           &ltm LAYER_USER   MB5     // config
 
 
