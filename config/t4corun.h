@@ -42,7 +42,7 @@
 #define COLOR_SNIPE        FF 00 00
 #define COLOR_USER         00 80 FF
 #define COLOR_BT_CHANGE    00 FF 40
-#define PULSE_BT           50 250
+#define PULSE_BT           50 225
 #define PULSE_LAYER        50
 
 #define TWIST_MPLY         1

@@ -61,42 +61,44 @@
 
         evt_ble_1 {
             colors = [COLOR_BT_CHANGE];
+			flash-duration-ms = <50>;
             feedback-pattern = <PULSE_BT>;
         };
 
         evt_ble_2 {
             colors = [COLOR_BT_CHANGE];
+			flash-duration-ms = <325>;
             feedback-pattern = <PULSE_BT PULSE_BT>;
         };
 
         evt_ble_3 {
             colors = [COLOR_BT_CHANGE];
-            flash-duration-ms = <500>;
+            flash-duration-ms = <600>;
             feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT>;
         };
 
         evt_ble_4 {
             colors = [COLOR_BT_CHANGE];
-            flash-duration-ms = <725>;
+            flash-duration-ms = <875>;
             feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
         };
 
         evt_ble_5 {
             colors = [COLOR_BT_CHANGE];
-            flash-duration-ms = <950>;
+            flash-duration-ms = <1150>;
             feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
         };
 
-        evt_ble_6 {
-            label = "Bluetooth device";
-            event-type = "ble-profile";
-            colors = [COLOR_BT_CHANGE];
-            animation = "flash";
-            flash-duration-ms = <1175>;
-            flash-ease-in-ms = <100>;
-            flash-ease-out-ms = <100>;
-            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
-            ble-profile-index = <5>;
-        };
+//        evt_ble_6 {
+//            label = "Bluetooth device";
+//            event-type = "ble-profile";
+//            colors = [COLOR_BT_CHANGE];
+//            animation = "flash";
+//            flash-duration-ms = <1425>;
+//            flash-ease-in-ms = <100>;
+//            flash-ease-out-ms = <100>;
+//            feedback-pattern = <PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT PULSE_BT>;
+//            ble-profile-index = <5>;
+//        };
     };
 };
