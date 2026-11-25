@@ -52,5 +52,5 @@
 &scrlsens {
     step = <50>;
     min-step = <6>;
-    max-step = <8>;
+    max-step = <9>;
 };
