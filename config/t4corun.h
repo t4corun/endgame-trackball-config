@@ -35,6 +35,7 @@
 #define ZMK_STUDIO         &studio_unlock
 //#define OS_SWAP            &bst_tog ZBS_TOG
 #define MUI_BT             &zbs_adv
+#define SYS_RESET          &sys_reset
 
 #define COLOR_OFF          00 00 00
 #define COLOR_DEVICE       80 00 FF

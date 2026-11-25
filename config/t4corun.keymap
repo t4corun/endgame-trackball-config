@@ -133,6 +133,20 @@
                 ENCODER_DOWN
             >;
         };
+
+        layer5 {
+            display-name = "User";
+            DECLARE_ENCODERS;
+            bindings = <
+                SYS_RESET       SOFT_OFF
+                MUI_BT		    OUTPUT_TOG
+                ZMK_STUDIO      _____xx_____
+                AF_TOGGLE       ____________
+
+                ENCODER_UP
+                ENCODER_DOWN
+            >;
+        };
     };
 
     trackball {
