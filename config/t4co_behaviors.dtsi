@@ -3,13 +3,13 @@
  *
  * Default: 3200
  * Range is 50-25600 in 50 CPI increments
- * 
+ */
 &trackball_primary {
-	cpi = <1600>
+	cpi = <1600>;
 };
 
 &trackball_secondary {
-	cpi = <1600>
+	cpi = <1600>;
 };
 
 
