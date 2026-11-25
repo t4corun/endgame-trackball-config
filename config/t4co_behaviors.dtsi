@@ -46,7 +46,7 @@
 &sens {
     step = <50>;
     min-step = <3>;
-    max-step = <6>;
+    max-step = <8>;
 };
 
 &scrlsens {
