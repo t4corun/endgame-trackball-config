@@ -19,11 +19,11 @@
  * Range is 50-25600 in 50 CPI increments
  */
 &trackball_primary {
-	cpi = <4000>;
+	cpi = <8000>;
 };
 
 &trackball_secondary {
-	cpi = <4000>;
+	cpi = <8000>;
 };
 
 
@@ -36,19 +36,19 @@
  *   then multiply this by CPI
  * 
  * Effective CPI
- *   2 >> 0.2 >>  800 CPI
- *   3 >> 0.3 >> 1200 CPI
- *   4 >> 0.4 >> 1600 CPI
- *   5 >> 0.5 >> 2000 CPI
+ *   2 >> 0.15  >> 1200 CPI
+ *   3 >> 0.225 >> 1800 CPI
+ *   4 >> 0.3   >> 2400 CPI
+ *   5 >> 0.375 >> 3000 CPI
  */
 &sens {
-    step = <100>;
+    step = <75>;
     min-step = <2>;
     max-step = <5>;
 };
 
 &scrlsens {
-    step = <100>;
+    step = <75>;
     min-step = <2>;
     max-step = <5>;
 };
