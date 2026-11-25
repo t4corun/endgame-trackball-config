@@ -23,7 +23,7 @@
  * 8ms: 125Hz
  */
 &rrl {
-    values-ms = <0 1 2 4 8>;
+    values-ms = <0 1 8>;
 };
 
 
@@ -43,15 +43,15 @@
  *   Each interval: 0.1
  */
 &sens {
-    step = <100>;
-    min-step = <1>;
-    max-step = <10>;
+    step = <250>;
+    min-step = <2>;
+    max-step = <4>;
 };
 
 &scrlsens {
-    step = <100>;
-    min-step = <1>;
-    max-step = <10>;
+    step = <250>;
+    min-step = <2>;
+    max-step = <4>;
 };
 
 
