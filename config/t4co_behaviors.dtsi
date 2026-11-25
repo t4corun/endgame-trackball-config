@@ -36,19 +36,21 @@
  *   then multiply this by CPI
  * 
  * Effective CPI
- *   2 >> 0.15  >> 1200 CPI
- *   3 >> 0.225 >> 1800 CPI
- *   4 >> 0.3   >> 2400 CPI
- *   5 >> 0.375 >> 3000 CPI
+ *   3  >> 0.15 >> 1200 CPI
+ *   4* >> 0.2  >> 1600 CPI
+ *   5  >> 0.25 >> 2000 CPI
+ *   6  >> 0.3  >> 2400 CPI (twist 480)
+ *   7* >> 0.35 >> 2800 CPI (twist 560)
+ *   8  >> 0.4  >> 3200 CPI (twist 640)
  */
 &sens {
-    step = <75>;
-    min-step = <2>;
-    max-step = <5>;
+    step = <50>;
+    min-step = <3>;
+    max-step = <6>;
 };
 
 &scrlsens {
-    step = <75>;
-    min-step = <2>;
-    max-step = <5>;
+    step = <50>;
+    min-step = <6>;
+    max-step = <8>;
 };
