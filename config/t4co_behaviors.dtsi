@@ -1,35 +1,68 @@
-/ {
-    /*
-     * 0ms: No delay? report as fast as possible
-     * 1ms: 1000Hz
-     * 2ms: 500Hz
-     * 4ms: 250Hz
-     * 8ms: 125Hz
-     */
-    rrl {
-        values-ms = <0 1 2 4 8>;
-    };
-
-    /*
-     * 125 one step: 0.125
-     * 1   min value: 0.1
-     * 8   max value: 1 (8 steps)
-     */
-
-    /*
-     * 50 step: 0.05
-     * 1 min value: 0.05
-     * 7 max value: 0.35
-     */
-    sens {
-        step = <50>;
-        min-step = <1>;
-        max-step = <7>;
-    };
-
-    scrlsens {
-        step = <50>;
-        min-step = <1>;
-        max-step = <7>;
-    };
+/*
+ * Pixart 3395 Overrides
+ *
+ * Default: 3200
+ * Range is 50-25600 in 50 CPI increments
+ * 
+&trackball_primary {
+	cpi = <12800>
 };
+
+&trackball_secondary {
+	cpi = <12800>
+};
+
+
+/*
+ * Polling Rate Setting Overrides
+ *
+ * 0ms: No delay? report as fast as possible
+ * 1ms: 1000Hz
+ * 2ms: 500Hz
+ * 4ms: 250Hz
+ * 8ms: 125Hz
+ */
+&rrl {
+    values-ms = <0 1 2 4 8>;
+};
+
+
+/*
+ * Pointer and Twist Scaling
+ *
+ * How it is used:
+ *   ( step * step increment ) / 1000
+ *   then multiply this by CPI
+ * 
+ * Example:
+ *   step: 100
+ *   min:  1
+ *   max:  10
+ * Effect:
+ *   Ten intervals: 0.1 to 1.0
+ *   Each interval: 0.1
+ */
+&sens {
+    step = <100>;
+    min-step = <1>;
+    max-step = <10>;
+};
+
+&scrlsens {
+    step = <100>;
+    min-step = <1>;
+    max-step = <10>;
+};
+
+
+/*
+ * 125 one step: 0.125
+ * 1   min value: 0.1
+ * 8   max value: 1 (8 steps)
+ */
+
+/*
+ * 50 step: 0.05
+ * 1 min value: 0.05
+ * 7 max value: 0.35
+ */
