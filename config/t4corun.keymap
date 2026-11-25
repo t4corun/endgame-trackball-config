@@ -124,21 +124,7 @@
             display-name = "User";
             DECLARE_ENCODERS;
             bindings = <
-                MUI_BT          SOFT_OFF
-                _____xx_____    OUTPUT_TOG
-                AF_TOGGLE       _____xx_____
-                ZMK_STUDIO      ____________
-
-                ENCODER_UP
-                ENCODER_DOWN
-            >;
-        };
-
-        layer5 {
-            display-name = "User";
-            DECLARE_ENCODERS;
-            bindings = <
-                SYS_RESET       SOFT_OFF
+                _____xx_____    SOFT_OFF
                 MUI_BT		    OUTPUT_TOG
                 ZMK_STUDIO      _____xx_____
                 AF_TOGGLE       ____________
