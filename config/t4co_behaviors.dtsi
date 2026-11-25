@@ -5,11 +5,11 @@
  * Range is 50-25600 in 50 CPI increments
  * 
 &trackball_primary {
-	cpi = <12800>
+	cpi = <1600>
 };
 
 &trackball_secondary {
-	cpi = <12800>
+	cpi = <1600>
 };
 
 
@@ -23,7 +23,7 @@
  * 8ms: 125Hz
  */
 &rrl {
-    values-ms = <0 1 8>;
+    values-ms = <0 1 2 4 8>;
 };
 
 
