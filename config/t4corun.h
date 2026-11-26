@@ -44,11 +44,11 @@
 #define PULSE_BT           50 225
 #define PULSE_LAYER        50
 
-#define TWIST_MPLY         1
-#define TWIST_DIV          5
+//#define TWIST_MPLY         1
+//#define TWIST_DIV          5
 
-#define SCROLL_MPLY        1
-#define SCROLL_DIV         10
+//#define SCROLL_MPLY        1
+//#define SCROLL_DIV         10
 
-#define SNIPE_MPLY         1
-#define SNIPE_DIV          4
+//ks#define SNIPE_MPLY         1
+//ks#define SNIPE_DIV          3
