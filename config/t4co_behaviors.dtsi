@@ -61,14 +61,14 @@
  */
 &zip_bistable_snipe_scaler {
 	default-coef = <ZBS_SCALE(1, 3)>;
-}
+};
 
 &zip_bistable_twist_scaler {
 	default-coef = <ZBS_SCALE(1, 5)>;
 	default-coef-slot1 = <ZBS_SCALE(1, 40)>;	
-}
+};
 
 &zip_bistable_scroll_xy_scaler { 
 	default-coef = <ZBS_SCALE(1, 10)>;
 	default-coef-slot1 = <ZBS_SCALE(1, 30)>;
-}
+};
